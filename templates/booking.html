@@ -1,10 +1,33 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block title %}
 boooking
 {% endblock %}
 
+<!-- 
+
+<h1 class="text-center">booking page</h1>
+<hr>
+<div class="container w-50">
+    <form action="">
+        {{form|crispy}}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+ -->
+<!-- filepath: c:\Users\joelm\OneDrive\Desktop\Django project\tutorial\templates\booking.html -->
+
 
 {% block content %}
-<h1>booking page</h1>
+<h1 class="text-center">Booking Page</h1>
+<hr>
+<div class="container w-25 text-center p-3 my-5 bg-info">
+    <form action="" method="POST" class="uniform">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button class="btn btn-primary" mb-4 type="submit">Submit</button>
+        
+    </form>
+</div>
 {% endblock %}
