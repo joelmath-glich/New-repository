@@ -7,4 +7,9 @@ doctors
 
 {% block content %}
 <h1>doctors page</h1>
+
+{% for d in doctors %}
+<h1>{{d.doc_name}}</h1>
+{% endfor %}
+
 {% endblock %}
