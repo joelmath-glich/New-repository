@@ -24,6 +24,7 @@ def booking(request):
         form = BookingForm(request.POST)
         if form.is_valid():
             form.save()
+            return render(request,'confirmation.html')
     else:
         form = BookingForm()
     dict_form = {
@@ -48,3 +49,25 @@ def department(request):
         'dept':Departments.objects.all()
     }
     return render(request,'department.html',dict_dept)
+
+# filepath: c:\Users\joelm\OneDrive\Desktop\Django project\tutorial\home\views.py
+import pickle
+from django.shortcuts import render
+from django.http import JsonResponse
+import numpy as np
+
+def predict(request):
+    if request.method == 'POST':
+        data = request.POST
+        features = [float(data['feature1']), float(data['feature2']), float(data['feature3']), float(data['feature4'])]
+
+        # Load model
+        with open('model.pkl', 'rb') as f:
+            model = pickle.load(f)
+
+        # Make prediction
+        prediction = model.predict([features])[0]
+
+        return JsonResponse({'prediction': prediction})
+
+    return render(request, 'predict.html')

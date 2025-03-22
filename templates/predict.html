@@ -1,0 +1,22 @@
+<!-- filepath: c:\Users\joelm\OneDrive\Desktop\Django project\tutorial\templates\predict.html -->
+{% extends "base.html" %}
+
+{% block title %}
+Predict
+{% endblock %}
+
+{% block content %}
+<h1>Predict</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="feature1">Feature 1:</label>
+    <input type="text" id="feature1" name="feature1"><br>
+    <label for="feature2">Feature 2:</label>
+    <input type="text" id="feature2" name="feature2"><br>
+    <label for="feature3">Feature 3:</label>
+    <input type="text" id="feature3" name="feature3"><br>
+    <label for="feature4">Feature 4:</label>
+    <input type="text" id="feature4" name="feature4"><br>
+    <button type="submit">Predict</button>
+</form>
+{% endblock %}
