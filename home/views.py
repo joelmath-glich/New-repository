@@ -68,6 +68,9 @@ def predict(request):
         # Make prediction
         prediction = model.predict([features])[0]
 
+        # Convert prediction to native Python type
+        prediction = prediction.item() if isinstance(prediction, np.generic) else prediction
+
         return JsonResponse({'prediction': prediction})
 
     return render(request, 'predict.html')
